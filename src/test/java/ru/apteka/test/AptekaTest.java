@@ -111,6 +111,7 @@ public class AptekaTest extends WebTest {
         SelenideElement favoriteButton = catalogPage.favoriteButton;
         SelenideElement removeAllButton = basketPage.removeAllButton;
         SelenideElement deleteFavsButton = favoritesScreen.deleteFavsButton;
+        SelenideElement favsTitle = favoritesScreen.favsTitle;
         SelenideElement tab = mainPage.tabs.filter(text("Лекарства и БАДы")).get(0);
 
         step("Навести курсор на вкладку", () -> {
@@ -149,6 +150,10 @@ public class AptekaTest extends WebTest {
 
         step("Очистить избранное", () -> {
             deleteFavsButton.click();
+        });
+
+        step("Очистить избранное", () -> {
+            favsTitle.shouldHave(text("Список избранных товаров пуст"));
         });
     }
 }
