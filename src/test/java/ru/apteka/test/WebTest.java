@@ -15,15 +15,16 @@ public class WebTest {
 
     @BeforeAll
     public static void setDriver() throws MalformedURLException {
-        boolean isRemote = true;
-//        if (isRemote) {
-//            DesiredCapabilities capabilities = new DesiredCapabilities();
-//            capabilities.setBrowserName("chrome");
-//            capabilities.setCapability("enableVNC:", true);
-//            WebDriver driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), capabilities);
-//            setWebDriver(driver);
-//        } else {
-//            Configuration.browser = "firefox";
-//        }
+        var systemEnvironment = System.getenv();
+        String isRemote = systemEnvironment.get("isRemote");
+        if (isRemote == "true") {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName("chrome");
+            capabilities.setCapability("enableVNC:", true);
+            WebDriver driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), capabilities);
+            setWebDriver(driver);
+        } else {
+            Configuration.browser = "chrome";
+        }
     }
 }
