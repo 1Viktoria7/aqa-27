@@ -4,15 +4,13 @@ on:
   pull_request:
     branches: ["master"]
 
-permissions:
-  contents: read
 env:
   IS_REMOTE: true
-  ALLURE_ENDPOINT: https://testing.allure.aws.qameta.in
-  ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}
-  ALLURE_PROJECT_ID: ${{ secrets.ALLURE_PROJECT_ID }}
-  ALLURE_RESULTS: "build/allure-results"
-  ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
+#  ALLURE_ENDPOINT: https://testing.allure.aws.qameta.in
+#  ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}
+#  ALLURE_PROJECT_ID: ${{ secrets.ALLURE_PROJECT_ID }}
+#  ALLURE_RESULTS: "build/allure-results"
+#  ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,4 +27,3 @@ jobs:
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: build
-
